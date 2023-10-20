@@ -66,6 +66,12 @@ async function run() {
       res.send(result);
 
   })
+  app.post('/phones/addtocart',async (req,res)=>{
+    const newPhone = req.body;
+    const result = await phonesCart.insertOne(newPhone)
+    res.send(result);
+
+})
   app.get('/phones/mycart',async (req,res)=>{
     const cursor =  phonesCart.find()
     const result = await cursor.toArray()
